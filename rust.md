@@ -136,5 +136,20 @@ fn birthday(person: Person) -> Person {
 }
 ```
 
+Execute a funtion for every element in an iterator and also execute another function, if it is not the last element.
 
-To be continued...
+```rust
+let v = vec![1, 2, 3, 4, 5, 6];
+let mut iter = v.into_iter().peekable();
+
+while let Some(element) = iter.next() {
+    // Execute for every element
+    print!("{}", element);
+    // Only write a `,` if this is not the last element
+    if iter.peek().is_some() {
+        print!(", ");
+    }
+}
+```
+
+> Note: For simple cases you may better use [Iterator::intersperse](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.intersperse) or [Vec::join](https://doc.rust-lang.org/std/vec/struct.Vec.html#method.join)
