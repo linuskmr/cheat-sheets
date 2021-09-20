@@ -252,3 +252,31 @@ fn main() {
     assert_eq!(10.double(), 20);
 }
 ```
+
+Generic type alias:
+
+```rust
+type ResultStringError<T> = Result<T, String>;
+```
+
+Drop behavior of temporary variables:
+
+"The code in Listing 20-20 that uses `let job = receiver.lock().unwrap().recv().unwrap();` works because with let, any temporary values used in the expression on the right hand side of the equals sign are immediately dropped when the let statement ends. However, `while let` (and `if let` and `match`) does not drop temporary values until the end of the associated block. In Listing 20-21, the lock remains held for the duration of the call to `job()`, meaning other workers cannot receive jobs."
+
+> See https://doc.rust-lang.org/book/ch20-02-multithreaded.html
+
+```rust
+impl Worker {
+    fn new(id: usize, receiver: Arc<Mutex<mpsc::Receiver<Job>>>) -> Worker {
+        let thread = thread::spawn(move || {
+            while let Ok(job) = receiver.lock().unwrap().recv() {
+                println!("Worker {} got a job; executing.", id);
+
+                job();
+            }
+        });
+
+        Worker { id, thread }
+    }
+}
+```
