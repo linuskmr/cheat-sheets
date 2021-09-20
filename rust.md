@@ -153,3 +153,102 @@ while let Some(element) = iter.next() {
 ```
 
 > Note: For simple cases you may better use [Iterator::intersperse](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.intersperse) or [Vec::join](https://doc.rust-lang.org/std/vec/struct.Vec.html#method.join)
+
+Capture values in match:
+
+```rust
+enum Message {
+  Hello {id: i32},
+}
+
+match msg {
+  Message::Hello { id: id_value @ 3..7 } => println!("In range 3..7: {}", id_value),
+  Message::Hello { id } => println!("Other: {}", id),
+}
+```
+
+Use implementation of trait by disambiguate with `as`:
+
+> See https://doc.rust-lang.org/book/ch19-03-advanced-traits.html
+
+```rust
+trait Animal {
+    fn name() -> &'static str;
+}
+
+struct Cat {}
+
+impl Animal for Cat {
+    fn name() -> &'static str {
+        "Cat is Animal"
+    }
+}
+
+impl Cat {
+    fn name() -> &'static str {
+        "Cat"
+    }
+}
+
+fn main() {
+    assert_eq!(Cat::name(), "Cat"); // Method of impl Cat
+    assert_eq!(<Cat as Animal>::name(), "Cat is Animal"); // Method of impl Animal for Cat
+}
+```
+
+Default generic type parameters in traits:
+
+> See https://doc.rust-lang.org/book/ch19-03-advanced-traits.html
+
+```rust
+trait Add<Rhs=Self> {
+    type Output;
+
+    fn add(self, rhs: Rhs) -> Self::Output;
+}
+```
+
+Specify that a trait will only work for types that also implement another trait.
+
+> See https://doc.rust-lang.org/book/ch19-03-advanced-traits.html
+
+```rust
+use std::fmt;
+
+trait OutlinePrint: fmt::Display {
+    fn outline_print(&self) {
+        let output = self.to_string();
+        let len = output.len();
+        println!("{}", "*".repeat(len + 4));
+        println!("*{}*", " ".repeat(len + 2));
+        println!("* {} *", output);
+        println!("*{}*", " ".repeat(len + 2));
+        println!("{}", "*".repeat(len + 4));
+    }
+}
+```
+
+Ophan Rule: You can implement a trait on a type a long as either the trait or the type are local to our crate.
+
+```rust
+trait Number {
+    /// Get the value of the number as i32.
+    fn value(&self) -> i32;
+
+    /// Doubles the number.
+    fn double(&self) -> i32 {
+        self.value() * 2
+    }
+}
+
+// Can implement Number for i32, because the trait `Number` is local to this crate.
+impl Number for i32 {
+    fn value(&self) -> i32 {
+        *self
+    }
+}
+
+fn main() {
+    assert_eq!(10.double(), 20);
+}
+```
