@@ -280,3 +280,10 @@ impl Worker {
     }
 }
 ```
+
+Function references are of type `fn()`, but closures are of type `Fn()`. You can use a function reference `fn()` everywhere where a closure `Fn()` is allowed.
+
+```rust
+let v = vec![1, 2, 3];
+let vs: Vec<String> = v.iter().map(ToString::to_string).collect();
+```
