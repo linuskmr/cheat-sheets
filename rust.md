@@ -287,3 +287,10 @@ Function references are of type `fn()`, but closures are of type `Fn()`. You can
 let v = vec![1, 2, 3];
 let vs: Vec<String> = v.iter().map(ToString::to_string).collect();
 ```
+
+Submodule `mod.rs`.
+
+Instead of `foo/mod.rs` you can now (in Rust 2018) can name the file simply `foo.rs` and put the other files related to the submodule in `foo/`.
+
+
+> See https://doc.rust-lang.org/edition-guide/rust-2018/path-changes.html#no-more-modrs
