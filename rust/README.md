@@ -399,6 +399,5 @@ not the concrete returned object.
 
 This is useful for [returning unboxed closures](https://doc.rust-lang.org/reference/types/impl-trait.html#abstract-return-types).
 
-> With impl Trait, unlike with a generic type parameter, the function chooses the return type, and the caller cannot choose the return type.
->
-> From https://doc.rust-lang.org/reference/types/impl-trait.html#differences-between-generics-and-impl-trait-in-return-position
+> With impl Trait, unlike with a generic type parameter, the function chooses the return type, and the caller cannot choose the return type[^impl-return].
+[^impl-return]: https://doc.rust-lang.org/reference/types/impl-trait.html#differences-between-generics-and-impl-trait-in-return-position
