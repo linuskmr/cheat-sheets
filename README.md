@@ -10,9 +10,9 @@ Here are my own cheat sheets for various programming languages.
 
 ### Sentinal Values
 
-Don't use `-1` for error codes, like `string.indexOf('x') == -1`. In [Rust](rust), use `Option`. In other languages, throw an Exception.
+Don't use `-1` for error codes, like `string.indexOf('x') == -1`. In [Rust](rust), use `Option`. In other languages, throw an Exception[^sentinal].
 
-> From https://adventures.michaelfbryan.com/posts/rust-best-practices/bad-habits/#using-sentinel-values
+[^sentinal]: https://adventures.michaelfbryan.com/posts/rust-best-practices/bad-habits/#using-sentinel-values
 
 ### Don't initialize after construction
 
@@ -30,10 +30,12 @@ Good:
 Dictionary::from_file("./words.txt")?;
 ```
 
-> From https://adventures.michaelfbryan.com/posts/rust-best-practices/bad-habits/#initialize-after-construction
+[^init-after-construction]
+
+[^init-after-construction]: https://adventures.michaelfbryan.com/posts/rust-best-practices/bad-habits/#initialize-after-construction
 
 ### Attention for readonly getters
 
-E.g. in python retuning a list from a getter and not providing a setter doesn't ensure the list or the items don't change.
+E.g. in python retuning a list from a getter and not providing a setter doesn't ensure the list or the items don't change[^readonly-getters].
 
-> From https://adventures.michaelfbryan.com/posts/rust-best-practices/bad-habits/#defensive-copies
+[^readonly-getters]: https://adventures.michaelfbryan.com/posts/rust-best-practices/bad-habits/#defensive-copies
