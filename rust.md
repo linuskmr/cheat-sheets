@@ -7,13 +7,13 @@
 //! Doc comment for module
 ```
 
-Inline if else with return value
+## Inline if else with return value
 
 ```rust
 let sign = if value >= 0 { '+' } else { '-' };
 ```
 
-Inline foreach loop:
+## Inline foreach loop
 
 ```rust
 for cty in ["Amsterdam", "Berlin", "New York"].iter() {
@@ -21,31 +21,39 @@ for cty in ["Amsterdam", "Berlin", "New York"].iter() {
 }
 ```
 
-Shadowing variables:
+## Shadowing variables
 
 ```rust
-let x = 42;
-let x = "Hello World";
-// Not allowed, because assignment with different type is not shadowing:
-// x = true;
+let answer = "42";
+let answer: i32 = number.parse();
+// Instead of
+let answer = "42";
+let answer_int = number.parser();
 ```
 
-Tuple with one element (like in Python):
+## Tuple with one element (like in Python):
 
 ```rust
 let tuple = (42, );
 ```
 
-Destructing a tuple:
+## Destructuring a tuple
 
 ```rust
 let (a, b, c) = (42, 19, 51);
 assert_eq!(a, 42);
 assert_eq!(b, 19);
 assert_eq!(c, 51);
+
+// Destructuring in function
+fn format_coordinates([x, y]: [f32; 2]) -> String {
+    format!("{}|{}", x, y)
+}
 ```
 
-Destructing a struct:
+> From https://adventures.michaelfbryan.com/posts/daily/slice-patterns/#irrefutable-pattern-matching
+
+## Destructuring a struct
 
 ```rust
 struct Position {
@@ -59,7 +67,7 @@ assert_eq!(p_lat, 50.1);
 assert_eq!(p_lng, 10.8);
 ```
 
-Fill array/vector:
+## Fill array/vector
 
 
 ```rust
@@ -70,7 +78,7 @@ let a = [0u; 42];
 let v = vec![0u; 42];
 ```
 
-Get the size of a type/variable:
+## Get the size of a type/variable
 
 ```rust
 // For a static sized type at compile time
@@ -83,7 +91,7 @@ let v_size = std::mem::size_of_val(&v);
 assert_eq!(v_size, 24);
 ```
 
-Read a string from stdin and parse it to a number:
+## Read a string from stdin and parse it to a number
 
 ```rust
 let mut input = String::new();
@@ -91,7 +99,7 @@ std::io::stdin()::read_line(&mut input)?;
 let input_number: i32 = input.trim().parse()?;
 ```
 
-Return a value from a loop:
+## Return a value from a loop:
 
 ```rust
 let mut counter = 0;
@@ -106,7 +114,7 @@ let result = {
 assert_eq!(result, 20);
 ```
 
-Shorthand struct initialization:
+## Shorthand struct initialization
 
 ```rust
 struct Person {
@@ -122,7 +130,9 @@ impl Person {
 }
 ```
 
-Struct update syntax, i.e. copy all missing fileds from another struct:
+## Struct update syntax
+
+Copies all missing fileds from another struct
 
 ```rust
 struct Person {
@@ -136,7 +146,7 @@ fn birthday(person: Person) -> Person {
 }
 ```
 
-Execute a funtion for every element in an iterator and also execute another function, if it is not the last element.
+## Execute a funtion for every element in an iterator and also execute another function, if it is not the last element
 
 ```rust
 let v = vec![1, 2, 3, 4, 5, 6];
@@ -154,7 +164,7 @@ while let Some(element) = iter.next() {
 
 > Note: For simple cases you may better use [Iterator::intersperse](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.intersperse) or [Vec::join](https://doc.rust-lang.org/std/vec/struct.Vec.html#method.join)
 
-Capture values in match:
+## Capture values in match
 
 ```rust
 enum Message {
@@ -167,7 +177,7 @@ match msg {
 }
 ```
 
-Use implementation of trait by disambiguate with `as`:
+## Use implementation of trait by disambiguate with `as`
 
 > See https://doc.rust-lang.org/book/ch19-03-advanced-traits.html
 
@@ -196,7 +206,7 @@ fn main() {
 }
 ```
 
-Default generic type parameters in traits:
+## Default generic type parameters in traits
 
 > See https://doc.rust-lang.org/book/ch19-03-advanced-traits.html
 
@@ -228,7 +238,9 @@ trait OutlinePrint: fmt::Display {
 }
 ```
 
-Ophan Rule: You can implement a trait on a type a long as either the trait or the type are local to our crate.
+## Ophan Rule
+
+You can implement a trait on a type a long as either the trait or the type are local to our crate.
 
 ```rust
 trait Number {
@@ -253,13 +265,13 @@ fn main() {
 }
 ```
 
-Generic type alias:
+## Generic type alias
 
 ```rust
 type ResultStringError<T> = Result<T, String>;
 ```
 
-Drop behavior of temporary variables:
+## Drop behavior of temporary variables
 
 "The code in Listing 20-20 that uses `let job = receiver.lock().unwrap().recv().unwrap();` works because with let, any temporary values used in the expression on the right hand side of the equals sign are immediately dropped when the let statement ends. However, `while let` (and `if let` and `match`) does not drop temporary values until the end of the associated block. In Listing 20-21, the lock remains held for the duration of the call to `job()`, meaning other workers cannot receive jobs."
 
@@ -288,9 +300,48 @@ let v = vec![1, 2, 3];
 let vs: Vec<String> = v.iter().map(ToString::to_string).collect();
 ```
 
-Submodule `mod.rs`.
+## Submodule `mod.rs`
 
 Instead of `foo/mod.rs` you can now (in Rust 2018) can name the file simply `foo.rs` and put the other files related to the submodule in `foo/`.
 
-
 > See https://doc.rust-lang.org/edition-guide/rust-2018/path-changes.html#no-more-modrs
+
+## Slice Patterns
+
+> This part is from https://adventures.michaelfbryan.com/posts/daily/slice-patterns
+
+### Handling Plurality
+
+```rust
+match words {
+  [] => (), // Zero elements
+  [word] => (), // One element
+  _ => (), // Multiple elements
+}
+```
+
+> From https://adventures.michaelfbryan.com/posts/daily/slice-patterns/#handling-plurality
+
+### Matching start
+
+```rust
+match text {
+  ['H', 'e', 'l', 'l', 'o'] => (), // test starts with Hello
+  _ => (),
+}
+```
+
+> From https://adventures.michaelfbryan.com/posts/daily/slice-patterns/#matching-the-start-of-a-slice
+
+### Palindrom check
+
+```rust
+fn is_palindrome(items: &[char]) -> bool {
+    match items {
+        [first, middle @ .., last] => first == last && is_palindrome(middle),
+        [] | [_] => true,
+    }
+}
+```
+
+> From https://adventures.michaelfbryan.com/posts/daily/slice-patterns/#checking-for-palindromes
