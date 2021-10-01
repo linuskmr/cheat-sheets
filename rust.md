@@ -345,3 +345,27 @@ fn is_palindrome(items: &[char]) -> bool {
 ```
 
 > From https://adventures.michaelfbryan.com/posts/daily/slice-patterns/#checking-for-palindromes
+
+### Argparser with slice patterns
+
+```rust
+loop {
+    match args {
+        ["-h" | "--help", ..] => {
+            eprintln!("Usage: main [--input <filename>] [--count <count>] <args>...");
+            std::process::exit(1);
+        }
+        ["-i" | "--input", filename, rest @ ..] => {
+            input = filename.to_string();
+            args = rest;
+        }
+        ["-c" | "--count", c, rest @ ..] => {
+            count = c.parse().unwrap();
+            args = rest;
+        }
+        [..] => break,
+    }
+}
+```
+
+> From https://adventures.michaelfbryan.com/posts/daily/slice-patterns/#irrefutable-pattern-matching
