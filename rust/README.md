@@ -51,7 +51,8 @@ fn format_coordinates([x, y]: [f32; 2]) -> String {
 }
 ```
 
-> From https://adventures.michaelfbryan.com/posts/daily/slice-patterns/#irrefutable-pattern-matching
+[^destructuring-in-function]
+[^destructuring-in-function]: https://adventures.michaelfbryan.com/posts/daily/slice-patterns/#irrefutable-pattern-matching
 
 ## Destructuring a struct
 
@@ -99,7 +100,7 @@ std::io::stdin()::read_line(&mut input)?;
 let input_number: i32 = input.trim().parse()?;
 ```
 
-## Return a value from a loop:
+## Return a value from a loop
 
 ```rust
 let mut counter = 0;
@@ -179,8 +180,6 @@ match msg {
 
 ## Use implementation of trait by disambiguate with `as`
 
-> See https://doc.rust-lang.org/book/ch19-03-advanced-traits.html
-
 ```rust
 trait Animal {
     fn name() -> &'static str;
@@ -206,9 +205,10 @@ fn main() {
 }
 ```
 
-## Default generic type parameters in traits
+[^disambiguate-as]
+[^disambiguate-as]: https://doc.rust-lang.org/book/ch19-03-advanced-traits.html
 
-> See https://doc.rust-lang.org/book/ch19-03-advanced-traits.html
+## Default generic type parameters in traits
 
 ```rust
 trait Add<Rhs=Self> {
@@ -218,9 +218,12 @@ trait Add<Rhs=Self> {
 }
 ```
 
-Specify that a trait will only work for types that also implement another trait.
+[^default-generic-type-parameter]
+[^default-generic-type-parameter]: https://doc.rust-lang.org/book/ch19-03-advanced-traits.html
 
-> See https://doc.rust-lang.org/book/ch19-03-advanced-traits.html
+## Supertraits
+
+Specify that a trait will only work for types that also implement another trait (the supertrait)
 
 ```rust
 use std::fmt;
@@ -237,6 +240,9 @@ trait OutlinePrint: fmt::Display {
     }
 }
 ```
+
+[^supertrait]
+[^supertrait]:  https://doc.rust-lang.org/book/ch19-03-advanced-traits.html
 
 ## Ophan Rule
 
@@ -273,9 +279,9 @@ type ResultStringError<T> = Result<T, String>;
 
 ## Drop behavior of temporary variables
 
-"The code in Listing 20-20 that uses `let job = receiver.lock().unwrap().recv().unwrap();` works because with let, any temporary values used in the expression on the right hand side of the equals sign are immediately dropped when the let statement ends. However, `while let` (and `if let` and `match`) does not drop temporary values until the end of the associated block. In Listing 20-21, the lock remains held for the duration of the call to `job()`, meaning other workers cannot receive jobs."
+"The code in Listing 20-20 that uses `let job = receiver.lock().unwrap().recv().unwrap();` works because with let, any temporary values used in the expression on the right hand side of the equals sign are immediately dropped when the let statement ends. However, `while let` (and `if let` and `match`) does not drop temporary values until the end of the associated block. In Listing 20-21, the lock remains held for the duration of the call to `job()`, meaning other workers cannot receive jobs."[^drop-temp-val]
 
-> See https://doc.rust-lang.org/book/ch20-02-multithreaded.html
+[^drop-temp-val]: https://doc.rust-lang.org/book/ch20-02-multithreaded.html
 
 ```rust
 impl Worker {
@@ -293,6 +299,17 @@ impl Worker {
 }
 ```
 
+[^drop-temp-val]
+
+## Function references and closures
+
+- All closures implement [`FnOnce`](https://doc.rust-lang.org/std/ops/trait.FnOnce.html). Called with `self`, `&self` or `&mut self`.
+- Functions that can be called with `&mut self` (or `&self`) implement [`FnMut`](https://doc.rust-lang.org/std/ops/trait.FnMut.html).
+- Functions that can be called with `&self` implement [`Fn`](https://doc.rust-lang.org/std/ops/trait.Fn.html).
+
+[^fn-fnmut-fnonce]
+[^fn-fnmut-fnonce]: https://stackoverflow.com/a/30232500
+
 Function references are of type `fn()`, but closures are of type `Fn()`. You can use a function reference `fn()` everywhere where a closure `Fn()` is allowed.
 
 ```rust
@@ -302,9 +319,9 @@ let vs: Vec<String> = v.iter().map(ToString::to_string).collect();
 
 ## Submodule `mod.rs`
 
-Instead of `foo/mod.rs` you can now (in Rust 2018) can name the file simply `foo.rs` and put the other files related to the submodule in `foo/`.
+> Instead of `foo/mod.rs` you can now (in Rust 2018) can name the file simply `foo.rs` and put the other files related to the submodule in `foo/`[^submodule-mod-rs].
 
-> See https://doc.rust-lang.org/edition-guide/rust-2018/path-changes.html#no-more-modrs
+[^submodule-mod-rs]: https://doc.rust-lang.org/edition-guide/rust-2018/path-changes.html#no-more-modrs
 
 ## Slice Patterns
 
@@ -319,8 +336,8 @@ match words {
   _ => (), // Multiple elements
 }
 ```
-
-> From https://adventures.michaelfbryan.com/posts/daily/slice-patterns/#handling-plurality
+[^handling-plurality]
+[^handling-plurality]: https://adventures.michaelfbryan.com/posts/daily/slice-patterns/#handling-plurality
 
 ### Matching start
 
@@ -331,7 +348,8 @@ match text {
 }
 ```
 
-> From https://adventures.michaelfbryan.com/posts/daily/slice-patterns/#matching-the-start-of-a-slice
+[^matching-start]
+[^matching-start]: https://adventures.michaelfbryan.com/posts/daily/slice-patterns/#matching-the-start-of-a-slice
 
 ### Palindrom check
 
@@ -344,7 +362,8 @@ fn is_palindrome(items: &[char]) -> bool {
 }
 ```
 
-> From https://adventures.michaelfbryan.com/posts/daily/slice-patterns/#checking-for-palindromes
+[^palindrome-check]
+[^palindrome-check]: https://adventures.michaelfbryan.com/posts/daily/slice-patterns/#checking-for-palindromes
 
 ### Argparser with slice patterns
 
@@ -368,7 +387,8 @@ loop {
 }
 ```
 
-> From https://adventures.michaelfbryan.com/posts/daily/slice-patterns/#irrefutable-pattern-matching
+[^argparser-slice-patterns]
+[^argparser-slice-patterns]: https://adventures.michaelfbryan.com/posts/daily/slice-patterns/#irrefutable-pattern-matching
 
 ## impl in parameters and return
 
