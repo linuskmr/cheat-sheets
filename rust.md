@@ -369,3 +369,16 @@ loop {
 ```
 
 > From https://adventures.michaelfbryan.com/posts/daily/slice-patterns/#irrefutable-pattern-matching
+
+## impl in parameters and return
+
+`impl` in function parameters is like a generic type, so `fn foo<T: Debug>(obj: T)` is equivalent to `fn foo(obj: impl Debug)`.
+
+But `impl` as return type specifies an unboxed abstract return type, so the caller can only access method of the trait,
+not the concrete returned object.
+
+This is useful for [returning unboxed closures](https://doc.rust-lang.org/reference/types/impl-trait.html#abstract-return-types).
+
+> With impl Trait, unlike with a generic type parameter, the function chooses the return type, and the caller cannot choose the return type.
+>
+> From https://doc.rust-lang.org/reference/types/impl-trait.html#differences-between-generics-and-impl-trait-in-return-position
