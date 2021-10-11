@@ -401,3 +401,30 @@ This is useful for [returning unboxed closures](https://doc.rust-lang.org/refere
 
 > With impl Trait, unlike with a generic type parameter, the function chooses the return type, and the caller cannot choose the return type[^impl-return].
 [^impl-return]: https://doc.rust-lang.org/reference/types/impl-trait.html#differences-between-generics-and-impl-trait-in-return-position
+
+## Into
+
+`Into` may be used for functions that need an owned value and don't care about if the original is an owned or borrowed value.
+
+```rust
+#[derive(Debug)]
+struct Person {
+    name: String,
+}
+
+impl Person {
+    fn new(name: impl Into<String>) -> Self {
+        // name.into() converts name into an owned string.
+        // This also works if name is a &str.
+        Self { name: name.into() }
+    }
+}
+
+fn main() {
+    let p: Person = Person::new("Rust");
+    println!("{:?}", p);
+}
+```
+
+[^into]
+[^into]: https://github.com/pretzelhammer/rust-blog/blob/master/posts/tour-of-rusts-standard-library-traits.md#conversion-traits
