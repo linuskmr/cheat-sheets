@@ -153,3 +153,33 @@ Creates a graphic with a global caption and two subraphics with one caption each
 	\label{fig:id-0}
 \end{figure}
 ```
+
+## Tables
+
+Arguments for `table` (Numbering tables and list them in the table list): See (figure positioning)[#Positioning].
+
+Arguments for `tabular` specify number and alignment of columns:
+- `l` - left-justified
+- `r` - right-justified
+- `c` - centered
+- `|` - Vertical line
+
+Commands in the table:
+- `&` - Column seperator
+- `\\` - Line seperator
+- `\hline` - Horizontal line
+
+```tex
+\begin{table}[h]
+	\centering
+	\caption{...}
+	\begin{tabular}{|c|c|}
+		\hline
+		0.0 & 0.1 \\
+		\hline
+		1.0 & 1.1 \\
+		\hline
+	\end{tabular}
+	\label{tab:id-0}
+\end{table}
+```
