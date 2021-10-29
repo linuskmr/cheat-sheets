@@ -4,7 +4,7 @@
 
 ### Chapters
 
-```latex
+```tex
 \chapter{...} % Only for documents of type book
 \section{...}
 \subsection{...}
@@ -13,7 +13,7 @@
 
 ### Abstract
 
-```
+```tex
 \begin{document}
 
 \begin{abstract}
@@ -55,7 +55,7 @@ Emphasise (cursive, but allows nesting): `emph{}`
 
 ### Unordered lists
 
-```
+```tex
 \begin{itemize}
    \item ...
    \item ...
@@ -64,7 +64,7 @@ Emphasise (cursive, but allows nesting): `emph{}`
 
 ### Ordered lists
 
-```
+```tex
 \begin{enumerate}
    \item ...
    \item ...
@@ -75,7 +75,7 @@ Emphasise (cursive, but allows nesting): `emph{}`
 
 > `\usepackage{graphicx}` must be imported.
 
-```
+```tex
 \begin{figure}
    \centering
    \includegraphics{filename.ending}
