@@ -71,3 +71,15 @@ Emphasise (cursive, but allows nesting): `emph{}`
 \end{enumerate}
 ```
 
+## Graphics
+
+> `\usepackage{graphicx}` must be imported.
+
+```
+\begin{figure}
+   \centering
+   \includegraphics{filename.ending}
+   \caption{Text below the graphic}
+   \label{fig:unique-id-used-for-referencing}
+\end{figure}
+```
