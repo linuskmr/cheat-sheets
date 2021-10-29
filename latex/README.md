@@ -83,3 +83,73 @@ Emphasise (cursive, but allows nesting): `emph{}`
    \label{fig:unique-id-used-for-referencing}
 \end{figure}
 ```
+
+### Scaling
+
+Scale size: `\includegraphics[scale = 0.7]{filename.ending}`
+
+Scale size to width of text: `\includegraphics[width = \textwidth]{filename.ending}`
+
+### Positioning
+
+> Positioning arguments are just a recommendation for LaTeX. To "enforce" the positioning, prefix the argument with a `!`.
+
+```tex
+\begin{figure}[hbtp]
+...
+\end{figure}
+```
+
+- `h` - Here
+- `b` - At bottom of current page
+- `t` - At top of current page
+- `p` - On an extra page
+
+### Graphics side by side
+
+#### Minipage
+
+Creates two seperate graphics with seperate captions side by side.
+
+```tex
+\begin{figure}[h]
+	\begin{minipage}{0.4\textwidth}
+		\centering
+		\includegraphics[width=0.3\textwidth]{filename.ending}
+		\caption{...}
+		\label{fig:id-0}
+	\end{minipage}
+	% Optional space: ~, \quad, \qquad, \hfill
+	\begin{minipage}{0.4\textwidth}
+		\centering
+		\includegraphics[width=0.3\textwidth]{filename.ending}
+		\caption{...}
+		\label{fig:id-1}
+	\end{minipage}
+\end{figure}
+```
+
+#### Subfigure
+
+Creates a graphic with a global caption and two subraphics with one caption each.
+
+```tex
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\centering
+		\includegraphics[width=0.4\textwidth]{filename.ending}
+		\caption{...}
+		\label{fig:id-0.0}
+	\end{subfigure}
+	% % Optional space: ~, \quad, \qquad, \hfill
+	\begin{subfigure}[b]{0.3\textwidth}
+		\centering
+		\includegraphics[width=0.4\textwidth]{filename.ending}
+		\caption{...}
+		\label{fig:id-0.1}
+	\end{subfigure}
+	\caption{Hier steht eine Beschreibung für beide Eulen.}
+	\label{fig:id-0}
+\end{figure}
+```
