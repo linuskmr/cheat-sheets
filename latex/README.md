@@ -239,3 +239,19 @@ Import `\usepackage{amsmath}` is needed.
 - `\log x, \ln(y), \exp(x+5)` - Logarithm and exponential function
 - `\sum_{i=0}^{5} i` - Sum
 - `\int_{0}^{\infty} x\, dx` - Integral
+
+# References
+
+> References are clickable if `\usepackage{hyperref}` is imported.
+
+```tex
+\ref{fig:id-0}
+```
+
+Naming conventions for labels:
+- `fig:` - Figures
+- `tab:` - Tables
+- `cha:` - Chapters
+- `sec:` - Sections
+
+Automatically add type of reference before number: `\autoref{}`. Requires `\usepackage{hyperref}`
