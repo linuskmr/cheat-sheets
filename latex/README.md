@@ -149,7 +149,7 @@ Creates a graphic with a global caption and two subraphics with one caption each
 		\caption{...}
 		\label{fig:id-0.1}
 	\end{subfigure}
-	\caption{Hier steht eine Beschreibung für beide Eulen.}
+	\caption{...}
 	\label{fig:id-0}
 \end{figure}
 ```
