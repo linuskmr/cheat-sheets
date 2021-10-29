@@ -183,3 +183,57 @@ Commands in the table:
 	\label{tab:id-0}
 \end{table}
 ```
+
+## Formulas
+
+### Inline
+
+```tex
+$ formula $
+```
+
+### Paragraph
+```tex
+\[
+...
+\]
+```
+
+### Numbered
+```tex
+\begin{equation}
+	\label{eq:id-0}
+	...
+\end{equation}
+```
+
+### Multiline formular
+
+The `&` vertically aligns the formulars.
+
+`\nonumber` disables nummerating this formular.
+
+Import `\usepackage{amsmath}` is needed.
+
+```tex
+\begin{align}
+	... & ... \\
+	& = ...\nonumber \\
+	... & ...
+\end{align}
+```
+
+### Operators
+
+- `\cdot` - Multiplication dot
+- `\text{...}` - Text in formular. Needs `\usepackage{amsmath}`
+- `\frac{top}{bottom}` - Fraction
+- `x_{2} x^{3} x_{2}^{3}` - Sup- and Superscript
+- `x y, x\, y, x\quad y, x \qquad y` - Spacing
+- `\alpha, \beta, \gamma, \delta` - Greek alphabet
+- `\sqrt[n]{a+b}` - Root
+- `\{, \}` - Curly braces
+- `\sin(x) \cos(x) \tan(x)` - sinus, cosinus, tangens
+- `\log x, \ln(y), \exp(x+5)` - Logarithm and exponential function
+- `\sum_{i=0}^{5} i` - Sum
+- `\int_{0}^{\infty} x\, dx` - Integral
