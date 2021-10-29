@@ -1,4 +1,6 @@
-# latex
+# LaTeX
+
+Cheat Sheet for LaTeX
 
 ## Structure
 
