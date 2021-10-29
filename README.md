@@ -6,6 +6,8 @@ Here are my own cheat sheets for various programming languages.
 
 [Rust](rust)
 
+[LaTeX](latex)
+
 ## Common
 
 ### Sentinal Values
