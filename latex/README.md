@@ -258,28 +258,42 @@ Automatically add type of reference before number: `\autoref{}`. Requires `\usep
 
 ## Quotes / Cites
 
+Quote / cite by id:
 ```tex
 \cite{}
+```
+
+Generate bibliography:
+```tex
+\bibliographystyle{plain}
+\bibliography{bibliography}
 ```
 
 ### Bib File
 
 ```bib
 @Book{id-0,
-    author = {...},
+    author = {{surname}, forename}, % Write surname in { } to show LaTeX what is the surname
     title={...},
     publisher = {...},
     year = {...}
 }
 
 @article{id-1,
-    author={..., ...},
+    author={{...}}, % Double braces forces to take the entry exactly as it is, without making any abbreviations
     title={...},
     journal={...},
     volume={...},
     number={...},
     pages={...--...},
     year={...}
+}
+
+% Web pages
+@MISC{id-2,
+    title={...},
+    howpublished = {\url{...}},
+    note ={Acceesed: YYYY-MM-DD}
 }
 ```
 
