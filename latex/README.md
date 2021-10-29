@@ -240,7 +240,7 @@ Import `\usepackage{amsmath}` is needed.
 - `\sum_{i=0}^{5} i` - Sum
 - `\int_{0}^{\infty} x\, dx` - Integral
 
-# References
+## References
 
 > References are clickable if `\usepackage{hyperref}` is imported.
 
@@ -255,3 +255,39 @@ Naming conventions for labels:
 - `sec:` - Sections
 
 Automatically add type of reference before number: `\autoref{}`. Requires `\usepackage{hyperref}`
+
+## Quotes / Cites
+
+```tex
+\cite{}
+```
+
+### Bib File
+
+```bib
+@Book{id-0,
+    author = {...},
+    title={...},
+    publisher = {...},
+    year = {...}
+}
+
+@article{id-1,
+    author={..., ...},
+    title={...},
+    journal={...},
+    volume={...},
+    number={...},
+    pages={...--...},
+    year={...}
+}
+```
+
+#### Required information for different sources
+
+| source        | required                       | optional                                                     |
+| ------------- | ------------------------------ | ------------------------------------------------------------ |
+| article       | author, title, journal, year   | volume, number, pages, month, note                           |
+| book          | author, title, publisher, year | volume, series, address, edition, month, note, isbn          |
+| inproceedings | author, title, booktitle, year | editor, colume, series, pages, address, month, organzitation, publisher, note |
+| misc          |                                | author, title, howpublished, month, year, note               |
