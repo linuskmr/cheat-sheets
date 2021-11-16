@@ -1,5 +1,7 @@
 ## Rust Cheat Sheet
 
+See also https://www.programming-idioms.org/cheatsheet/Rust
+
 ```rust
 // Line comment
 /* Block comment*/
