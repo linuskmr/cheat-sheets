@@ -2,14 +2,9 @@
 
 See also https://www.programming-idioms.org/cheatsheet/Rust
 
-```rust
-// Line comment
-/* Block comment*/
-/// Doc comment
-//! Doc comment for module
-```
-
 ## Inline if else with return value
+
+Works because everything if is an expression in Rust.
 
 ```rust
 let sign = if value >= 0 { '+' } else { '-' };
@@ -18,7 +13,7 @@ let sign = if value >= 0 { '+' } else { '-' };
 ## Inline foreach loop
 
 ```rust
-for cty in ["Amsterdam", "Berlin", "New York"].iter() {
+for city in ["Amsterdam", "Berlin", "New York"].iter() {
   println!("{}", city);
 }
 ```
@@ -430,3 +425,20 @@ fn main() {
 
 [^into]
 [^into]: https://github.com/pretzelhammer/rust-blog/blob/master/posts/tour-of-rusts-standard-library-traits.md#conversion-traits
+
+## Implement trait only for structs with special generic types
+
+Example inspired [chrono](https://crates.io/crates/chrono).
+
+```rust
+struct DateTime<T> {
+  timezone: T
+}
+
+trait Now {
+  fn now() -> String;
+}
+
+impl Now for DateTime<UTC> { ... }
+impl Now for DateTime<CET> { ... }
+```
