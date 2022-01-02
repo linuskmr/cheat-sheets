@@ -13,6 +13,8 @@ $ make && gdb --args ./executable
 
 Using [strace](https://man7.org/linux/man-pages/man1/strace.1.html) to record all called system calls.
 
+`-f`: Follow child processes
+
 ```
-& make && strace ./executable
+& make && strace -f ./executable
 ```
