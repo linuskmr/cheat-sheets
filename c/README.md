@@ -10,3 +10,9 @@ $ make && gdb --args ./executable
 > bt (backtrace)
 ...
 ```
+
+Using [strace](https://man7.org/linux/man-pages/man1/strace.1.html) to record all called system calls.
+
+```
+& make && strace ./executable
+```
