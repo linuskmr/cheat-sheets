@@ -2,6 +2,8 @@
 
 See also https://www.programming-idioms.org/cheatsheet/Rust
 
+https://cheats.rs
+
 ## Inline if else with return value
 
 Works because everything if is an expression in Rust.
