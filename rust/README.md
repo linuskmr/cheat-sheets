@@ -444,3 +444,8 @@ trait Now {
 impl Now for DateTime<UTC> { ... }
 impl Now for DateTime<CET> { ... }
 ```
+
+## Object Safety
+
+Object safe means that no method of a trait returns some sort of `Self`.
+Object safety is needed for `<dyn Trait>`, but not for `<T: Trait>`, because `dyn` has not enough runtime information about which actual type belongs to it.
