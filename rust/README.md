@@ -449,3 +449,30 @@ impl Now for DateTime<CET> { ... }
 
 Object safe means that no method of a trait returns some sort of `Self`.
 Object safety is needed for `<dyn Trait>`, but not for `<T: Trait>`, because `dyn` has not enough runtime information about which actual type belongs to it.
+
+## Not all generic type constraints on struct / Generic constraints on individual methods
+
+It is not necessary to declare all type constraints on a struct, making it unusable for generic types that do not satisfy the constraints. Sometimes it is a better idea to declare the constraints (or additonal constraints) on the `impl` block or individual methods.
+
+```rust
+trait MyTrait {}
+
+// No constraint
+struct Foo<T>(T);
+
+// Constraint on impl block
+impl<T: MyTrait> Foo<T> {
+  ...
+}
+
+// or
+
+impl<T> Foo<T> {
+  // Constraint on method
+	fn get(&self) -> &T
+		where T: MyTrait
+	{
+		...
+	}
+}
+```
