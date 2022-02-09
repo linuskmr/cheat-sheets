@@ -476,3 +476,33 @@ impl<T> Foo<T> {
 	}
 }
 ```
+
+## Borrow: Accept reference or owned value
+
+```rust
+use std::borrow::Borrow;
+
+struct Person {
+	name: &'static str,
+	age: u8,
+}
+
+fn print_age_borrow<P>(p: P)
+where
+	P: Borrow<Person>
+{
+	println!("age {}", p.borrow().age);
+}
+
+fn main() {
+	let person = Person {
+		name: "Linus",
+		age: 20,
+	};
+	
+	// Call with reference
+	print_age_borrow(&person);
+	// Call with owned value
+	print_age_borrow(person);
+}
+```
