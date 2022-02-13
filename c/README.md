@@ -38,3 +38,9 @@ process <ID>
 (gdb has to keep running)
 $ cat /proc/<ID>/maps
 ```
+
+## Show symbols from object file
+
+```
+$ nm --demangle BINARY
+```
