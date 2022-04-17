@@ -44,3 +44,9 @@ $ cat /proc/<ID>/maps
 ```
 $ nm --demangle BINARY
 ```
+
+## Show strings in object file
+
+```
+$ strings BINARY
+```
