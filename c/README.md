@@ -50,3 +50,9 @@ $ nm --demangle BINARY
 ```
 $ strings BINARY
 ```
+
+## Dump sections of a binary
+
+```
+$ readelf -x .rodata BINARY
+```
