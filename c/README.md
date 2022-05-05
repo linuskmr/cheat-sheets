@@ -45,6 +45,8 @@ $ cat /proc/<ID>/maps
 $ nm --demangle BINARY
 ```
 
+Demangle rust symbol names by pipeing this into [rustfilt](https://crates.io/crates/rustfilt).
+
 ## Show strings in object file
 
 ```
@@ -55,4 +57,16 @@ $ strings BINARY
 
 ```
 $ readelf -x .rodata BINARY
+```
+
+## Display table of contents of an .a archive
+
+![](https://fasterthanli.me/content/articles/why-is-my-rust-build-so-slow/assets/c-build-pipeline.5ce1780d188652a1.svg)
+> From https://fasterthanli.me/articles/why-is-my-rust-build-so-slow
+
+Many object files (`.o`) can be combined into an `.a` archive file.
+You can show the contents via:
+
+```
+$ ar t blabla.a
 ```
