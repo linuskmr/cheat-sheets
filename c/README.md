@@ -76,3 +76,7 @@ $ ar t blabla.a
 Set the environmental variable `LD_DEBUG=all` to see what the linker does at runtime.
 
 `lld` prints shared object dependencies.
+
+## printf with string length
+
+`printf("%.*s\n", str_len, str);`
