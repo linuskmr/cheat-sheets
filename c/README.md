@@ -70,3 +70,9 @@ You can show the contents via:
 ```
 $ ar t blabla.a
 ```
+
+## Dynamic linker
+
+Set the environmental variable `LD_DEBUG=all` to see what the linker does at runtime.
+
+`lld` prints shared object dependencies.
