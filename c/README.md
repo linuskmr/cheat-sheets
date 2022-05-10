@@ -77,6 +77,14 @@ Set the environmental variable `LD_DEBUG=all` to see what the linker does at run
 
 `lld` prints shared object dependencies.
 
+> If you set LD_PRELOAD to the path of a shared object, that file will be loaded before
+> any other library (including the C runtime, libc.so). So to run ls with your special
+> malloc() implementation, do this:
+> 
+> `$ LD_PRELOAD=/path/to/my/malloc.so /bin/ls`
+>
+> — https://stackoverflow.com/a/426260
+
 ## printf with string length
 
 `printf("%.*s\n", str_len, str);`
