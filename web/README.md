@@ -19,6 +19,12 @@ a web page and generates a report of how to improve a website. This includes:
 * Cross-origin Resource Sharing (CORS)
 * XSS-Protection Header
 
+## PageSpeed
+
+Real word speed test provided by user data.
+
+[https://pagespeed.web.dev](https://pagespeed.web.dev)
+
 ## HTML Tags
 
 header, nav, main, p, a, article, section, figure (image with caption), picture (multiple sources), datetime, del & ins (delete and newly inserted text), abbr (Abbreviation)
