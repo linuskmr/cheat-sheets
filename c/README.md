@@ -88,3 +88,9 @@ Set the environmental variable `LD_DEBUG=all` to see what the linker does at run
 ## printf with string length
 
 `printf("%.*s\n", str_len, str);`
+
+## kill by name
+
+```
+$ killall -SIGINT processname
+```
