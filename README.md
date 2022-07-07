@@ -10,6 +10,8 @@ Here are my own cheat sheets for various programming languages.
 
 [LaTeX](latex)
 
+[Java](java)
+
 [Web best practices tools](web)
 
 ## Common
