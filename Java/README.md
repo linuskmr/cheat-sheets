@@ -1,4 +1,4 @@
-# # Java
+# Java
 
 ## Exception with cause
 
