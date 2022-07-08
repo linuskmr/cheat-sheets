@@ -14,6 +14,8 @@ Here are my own cheat sheets for various programming languages.
 
 [Web best practices tools](web)
 
+[Javascript](js)
+
 ## Common
 
 ### Sentinal Values
