@@ -73,6 +73,12 @@ $ ar t blabla.a
 
 ## Dynamic linker
 
+### ldconfig
+
+> ldconfig(8). ldconfig examines the existing files and creates the sonames as symbolic links to the real names, as well as setting up the cache file /etc/ld.so.cache (described in a moment).
+> 
+> https://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html
+
 Set the environmental variable `LD_DEBUG=all` to see what the linker does at runtime.
 
 
