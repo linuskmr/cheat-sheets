@@ -75,7 +75,20 @@ $ ar t blabla.a
 
 Set the environmental variable `LD_DEBUG=all` to see what the linker does at runtime.
 
-`lld` prints shared object dependencies.
+
+### ldd
+
+`ldd` prints shared object dependencies.
+
+Attention: ldd is a bash script, which invokes the executable with the environmental variable `LD_TRACE_LOADED_OBJECTS=1`,
+so the executable has to run on the computer executing ldd. If this is not possible,
+consider [#get-shared-library-dependencies-with-readelf](using readelf to get shared library depenedencies).
+
+### Get shared library dependencies with readelf
+
+```
+readelf --dynamic BINARY
+```
 
 > If you set LD_PRELOAD to the path of a shared object, that file will be loaded before
 > any other library (including the C runtime, libc.so). So to run ls with your special
