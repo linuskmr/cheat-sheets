@@ -82,7 +82,7 @@ Set the environmental variable `LD_DEBUG=all` to see what the linker does at run
 
 Attention: ldd is a bash script, which invokes the executable with the environmental variable `LD_TRACE_LOADED_OBJECTS=1`,
 so the executable has to run on the computer executing ldd. If this is not possible,
-consider [#get-shared-library-dependencies-with-readelf](using readelf to get shared library depenedencies).
+consider (using readelf to get shared library depenedencies)[#get-shared-library-dependencies-with-readelf].
 
 ### Get shared library dependencies with readelf
 
